@@ -6,13 +6,13 @@
         {
             bool userChoice = true;
            
-            while (true)
+            while (userChoice == true)
             {
                 Console.WriteLine("Welcome to main menu for testing differént tasks!");
                 Console.WriteLine("Please press a key to continue or press 0 to quit.");
                 int input = int.Parse(Console.ReadLine());
                 if (input == 0)
-                    userChoice = false;
+                   userChoice = false;
 
             }
         }
