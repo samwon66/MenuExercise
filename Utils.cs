@@ -39,6 +39,7 @@ namespace MenuExercise
             }
         }
 
+        //Method for controlling the string user entered is at least 3 words. 
         public static void CheckSubsLength(string[] subs)
         {
             if (subs.Length > 2)
