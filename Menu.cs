@@ -9,10 +9,13 @@ namespace MenuExercise
     public class Menu
     {
 
-
+        //Method for printing out menu.
         public void RunMenu()
         {
             bool quitMenu = true;
+            bool success = false;
+            int userAge, userInput;
+            string userString;
 
             while (quitMenu == true)
             {
@@ -24,38 +27,64 @@ namespace MenuExercise
                 Console.WriteLine("4. The third word");
                 Console.WriteLine("0. Quit");
                 Console.Write(">");
-                int input = int.Parse(Console.ReadLine());
-                switch (input)
+                success = int.TryParse(Console.ReadLine(), out userInput);
+                if (success)
                 {
-                    case 0:
-                        Console.WriteLine("Bye!");
+                    switch (userInput)
+                    {
+                        case 0:
+                        Console.WriteLine(">Bye!");
                         quitMenu = false;
                         break;
 
-                    case 1:
-                        Console.Write("Please enter your age: ");
-                        int userAge = int.Parse(Console.ReadLine());
-                        Utils.CheckAge(userAge);
+                        case 1:
+                        Console.Clear();
+                        Console.WriteLine(">Find out the price of your ticket.");
+                        Console.Write(">Please enter your age: ");
+                        success = int.TryParse(Console.ReadLine(), out userAge);
+                            if (success) 
+                            { 
+                                Utils.GetPrice(userAge);
                         
+                            }
+                            else
+                            {
+                                Console.WriteLine(">You have entered an invalid amount, please try again.");
+                                Console.ReadLine();
+                            }
+
                         break;
 
-                    case 2:
-                        Console.Write("How many tickets? ");
-                        int amountOfTickets = int.Parse(Console.ReadLine());
-                        int sum = 0;
-                        for (int i = amountOfTickets; i > 0; i--)
+                        case 2:
+                        Console.Clear();
+                        Console.WriteLine(">Get the total price of tickets.");
+                        Console.Write(">How many tickets? ");
+                        int amountOfTickets; 
+                        success = int.TryParse(Console.ReadLine(), out amountOfTickets);
+                        if (success)
                         {
-                            Console.Write("Please enter your age: ");
-                            userAge = int.Parse(Console.ReadLine());
-                            sum += Utils.CheckAge(userAge);
+                            int sum = 0;
+                            for (int i = amountOfTickets; i > 0; i--)
+                            {
+                                Console.Write(">Please enter your age: ");
+                                userAge = int.Parse(Console.ReadLine());
+                                sum += Utils.GetPrice(userAge);
+                            }
+                            Console.WriteLine($">Amount of tickets: {amountOfTickets}\n>Total price: {sum}");
+                            Console.ReadLine();
                         }
-                        Console.WriteLine($"Amount of tickets: {amountOfTickets}\nTotal price: {sum}");
-                        Console.ReadLine();
+                        else
+                        {
+                            Console.WriteLine(">You have entered an invalid amount, please try again.");
+                            Console.ReadLine();
+                        }
                         break;
 
-                    case 3:
-                        Console.WriteLine("Please enter a sentense: ");
-                        string userString = Console.ReadLine();
+                        case 3:
+                        Console.Clear();
+                        Console.WriteLine("Print out the sentense that user entered 10 times.");
+                        Console.WriteLine(">Please enter a sentense: ");
+                        userString = Console.ReadLine();
                         for (int i = 1; i < 11; i++)
                         {
                             Console.Write($"{i}.{userString},");
@@ -63,23 +92,32 @@ namespace MenuExercise
                         Console.ReadLine();
                         break;
 
-                    case 4:
-                        Console.WriteLine("Please enter a sentense with at least 3 words.");
-                        userString = Console.ReadLine();
-                        string[] subs = userString.Split(' ');
-                        Console.WriteLine(subs[2]);
+                        case 4:
+                            Console.Clear();
+                            Console.WriteLine("Print out the third word of the sentense that entered by user.");
+                            Console.WriteLine(">Please enter a sentense with at least 3 words.");
+                            userString = Console.ReadLine();
+                            string[] subs = userString.Split(' ');
+                            Utils.CheckSubsLength(subs);
+                            break;
+
+                        default:
+                        Console.WriteLine(">You have enter a invalid choice, please try again by pressing enter.");
                         Console.ReadLine();
                         break;
 
-                    default:
-                        Console.WriteLine("Wrong input, please try again by pressing enter.");
-                        Console.ReadLine();
-                        quitMenu = true;
-                        break;
-
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("You have entered a invalid choice, please try again");
+                    Console.ReadLine();
                 }
 
             }
         }
+
+        
     }
 }

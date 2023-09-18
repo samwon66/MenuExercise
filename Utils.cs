@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace MenuExercise
 {
+    //Class for helpers methods.
     public static class Utils
     {
         //Method for checking price for different ages of user. 
         //The price of ticket will be returned.
-        public static int CheckAge(int age)
+        public static int GetPrice(int age)
         {
             if (age < 5 || age > 100)
             {
@@ -37,5 +38,20 @@ namespace MenuExercise
                 return 120;
             }
         }
+
+        public static void CheckSubsLength(string[] subs)
+        {
+            if (subs.Length > 2)
+            {
+                Console.WriteLine($"The third word: {subs[2]}");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Your sentense have to be at least 3 words, please try again.");
+                Console.ReadLine();
+            }
+        }
+
     }
 }
