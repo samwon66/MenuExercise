@@ -79,6 +79,11 @@ namespace MenuExercise
                         break;
 
                     case 4:
+                        Console.WriteLine("Please enter a sentense with at least 3 words.");
+                        userString = Console.ReadLine();
+                        string[] subs = userString.Split(' ');
+                        Console.WriteLine(subs[2]);
+                        Console.ReadLine();
                         break;
 
                     default:
