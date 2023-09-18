@@ -35,26 +35,27 @@ namespace MenuExercise
                     case 1:
                         Console.Write("Please enter your age: ");
                         int userAge = int.Parse(Console.ReadLine());
-                        if (userAge < 5 || userAge > 100)
-                        {
-                            Console.WriteLine("You are under 5 or over 100, your price will be free.\nPress enter to continue.");
-                            Console.ReadLine();
-                        }
-                        else if (userAge < 20)
-                        {
-                            Console.WriteLine("You are under 20, your price will be 80kr.\nPress enter to continue.");
-                            Console.ReadLine();
-                        }
-                        else if (userAge > 64)
-                        {
-                            Console.WriteLine("Yor're over 64, your price will be 90. \nPress enter to contnue.");
-                            Console.ReadLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Your price will be 120kr.\nPress enter to continue.");
-                            Console.ReadLine();
-                        }
+                        Utils.CheckAge(userAge);
+                        //if (userAge < 5 || userAge > 100)
+                        //{
+                        //    Console.WriteLine("You are under 5 or over 100, your price will be free.\nPress enter to continue.");
+                        //    Console.ReadLine();
+                        //}
+                        //else if (userAge < 20)
+                        //{
+                        //    Console.WriteLine("You are under 20, your price will be 80kr.\nPress enter to continue.");
+                        //    Console.ReadLine();
+                        //}
+                        //else if (userAge > 64)
+                        //{
+                        //    Console.WriteLine("Yor're over 64, your price will be 90. \nPress enter to contnue.");
+                        //    Console.ReadLine();
+                        //}
+                        //else
+                        //{
+                        //    Console.WriteLine("Your price will be 120kr.\nPress enter to continue.");
+                        //    Console.ReadLine();
+                        //}
 
                         break;
 
